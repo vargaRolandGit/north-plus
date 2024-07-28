@@ -8,6 +8,8 @@ class Lexer {
         {"pop", TokenType.POP}, 
         {"stack", TokenType.STACK},
         {"add", TokenType.ADD},
+        {"dup", TokenType.DUP},
+        {"mul", TokenType.MUL},
     };
 
     readonly string _fileName;
@@ -70,20 +72,7 @@ class Lexer {
                         " file: " + _fileName +  "!"
                     );
                 } 
-                switch (type) {
-                    case TokenType.PUSH:
-                        AddToken(buffer, TokenType.PUSH, src);
-                    break;
-                    case TokenType.POP:
-                        AddToken(buffer, TokenType.POP, src);
-                    break;                    
-                    case TokenType.STACK:
-                        AddToken(buffer, TokenType.STACK, src);
-                    break;
-                    case TokenType.ADD:
-                        AddToken(buffer, TokenType.ADD, src);
-                    break;                      
-                }
+                AddToken(buffer, type, src);
             }
 
             else {
