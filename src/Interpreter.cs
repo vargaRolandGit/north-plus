@@ -31,6 +31,10 @@ class Interpreter {
                 Dup(_tokens[i]);
             } else if (_tokens[i].Type == TokenType.MUL) {
                 Mul(_tokens[i]);
+            } else if (_tokens[i].Type == TokenType.PRINT) {
+                if (_tokens[i+1].Type == TokenType.STRING_LITERAL) {
+                    Console.Write(_tokens[i+1].Value);
+                }
             }
             /*------------*/ 
             else {

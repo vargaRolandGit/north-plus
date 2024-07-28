@@ -23,6 +23,11 @@ class North {
         List<Token> tokens = lexer.Tokenize(sourceCode);
         Interpreter interpreter = new Interpreter(tokens);
         interpreter.Run(0, tokens.Count);
+
+        //foreach (var item in tokens)
+        //{   
+        //    Console.WriteLine(item.Value);
+        //}
         
     }
 

@@ -5,8 +5,10 @@ enum TokenType {
     PROC, DEFINE, EXIT,
     COMMENT, IDENTIFIER, STRING_LITERAL, NUMBER,
 
-    ADD, SUB, DIV, MUL,
+    ADD, SUB, DIV, MUL, 
     POP, PUSH, SWITH, DUP, STACK,
+
+    PRINT,
 
     EOF    
 } 

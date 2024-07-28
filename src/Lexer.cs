@@ -10,6 +10,7 @@ class Lexer {
         {"add", TokenType.ADD},
         {"dup", TokenType.DUP},
         {"mul", TokenType.MUL},
+        {"print", TokenType.PRINT},
     };
 
     readonly string _fileName;
@@ -50,6 +51,18 @@ class Lexer {
                 }
                 _currentLine++;
                 shift(src);
+            }
+            /*STRING LITERALS*/
+            else if (src[_currentPos] == '"') {
+                shift(src);
+                string buffer = "";
+                while (!(src[_currentPos] == '"')) {
+                    buffer += src[_currentPos].ToString();
+                    shift(src);
+                }
+                AddToken(buffer, TokenType.STRING_LITERAL, src);
+                shift(src);
+
             } else if (Char.IsNumber(src[_currentPos])) {
                 string buffer = "";
                 while (Char.IsNumber(src[_currentPos])
@@ -83,7 +96,6 @@ class Lexer {
                 );
             }
         }
-
         return _tokens;
     }
     

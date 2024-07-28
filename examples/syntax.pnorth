@@ -1,3 +1,5 @@
+import './another_file.pnorth'
+
 # comment
 @define PI :: 3.14 # macro declaration or
 @define G :: 10
