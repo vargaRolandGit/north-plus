@@ -1,0 +1,27 @@
+# comment
+@define PI :: 3.14 # macro declaration or
+@define G :: 10
+
+type Person {
+    age : int
+    name : string
+}
+
+@add_five -> a | a push 5 add
+
+proc loop {
+    push G
+
+    if 20 {
+        print 'it is 20!' br
+        exit
+    } else {
+        add_five 
+        run loop 
+    }
+
+}
+
+proc main {
+
+}
