@@ -2,11 +2,12 @@
 using System.IO;
 using System.Text;
 
+
 namespace North;
 class North {
 
     static void Usage() {
-
+        // TODO
     } 
     
     static string ReadFile(string filePath) {
@@ -26,7 +27,7 @@ class North {
 
         //foreach (var item in tokens)
         //{   
-        //    Console.WriteLine(item.Value);
+        //    Console.WriteLine(item.Value + " || " + item.Type);
         //}
         
     }

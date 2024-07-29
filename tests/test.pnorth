@@ -1,1 +1,10 @@
-print "Hello, North!"
+push 34
+push 35
+add
+
+if 69 {
+    push 20
+}
+
+push 40
+stack

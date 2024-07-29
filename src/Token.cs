@@ -2,8 +2,10 @@ namespace North;
 
 enum TokenType {
 
-    PROC, DEFINE, EXIT,
+    PROC, DEFINE, EXIT, IF, ELSE,
     COMMENT, IDENTIFIER, STRING_LITERAL, NUMBER,
+
+    BLOCK_START, BLOCK_END,
 
     ADD, SUB, DIV, MUL, 
     POP, PUSH, SWITH, DUP, STACK,

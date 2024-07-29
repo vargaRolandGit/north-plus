@@ -11,6 +11,8 @@ class Lexer {
         {"dup", TokenType.DUP},
         {"mul", TokenType.MUL},
         {"print", TokenType.PRINT},
+        {"if", TokenType.IF},
+        {"else", TokenType.ELSE},
     };
 
     readonly string _fileName;
@@ -40,11 +42,11 @@ class Lexer {
         char[] src = sourceCode.ToCharArray(); 
 
         while ((_currentPos + 1) <= src.Length) {
-            if (src[_currentPos] == '\n') {
+            if (Char.IsWhiteSpace(src[_currentPos]) && src[_currentPos] != '\n') {
+                shift(src);
+            } else if (src[_currentPos] == '\n') {
+                shift(src);
                 _currentLine++;
-                shift(src);
-            } else if (src[_currentPos] == ' ' || src[_currentPos] == '\t') {
-                shift(src);
             } else if (src[_currentPos] == '#') {
                 while (!(src[_currentPos] == '\n')) {
                     shift(src);
@@ -63,6 +65,12 @@ class Lexer {
                 AddToken(buffer, TokenType.STRING_LITERAL, src);
                 shift(src);
 
+            } else if (src[_currentPos] == '{') {
+                AddToken("{", TokenType.BLOCK_START, src);
+                shift(src);} 
+            else if (src[_currentPos] == '}') {
+                AddToken("}", TokenType.BLOCK_END, src);
+                shift(src);
             } else if (Char.IsNumber(src[_currentPos])) {
                 string buffer = "";
                 while (Char.IsNumber(src[_currentPos])
