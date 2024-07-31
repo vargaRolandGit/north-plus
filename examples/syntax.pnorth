@@ -14,7 +14,7 @@ type Person {
 proc loop {
     push G
 
-    if 20 {
+    = if {
         print 'it is 20!' br
         exit
     } else {

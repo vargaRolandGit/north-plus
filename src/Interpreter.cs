@@ -69,10 +69,27 @@ class Interpreter {
                         }
                         if (top() == num) {
                                 i = ifBlockEnd;
+                                int blockEnd = i + 3; 
+                                if (_tokens[i+1].Type == TokenType.ELSE) 
+                                    while (_tokens[blockEnd].Type != TokenType.BLOCK_END) {
+                                        blockEnd++;
+                                    }
                                 Run(ifBlockStart, ifBlockEnd - 1);
+                                i = blockEnd;
                         } else {
                             // TODO: else block
                             i = ifBlockEnd;
+                            var elseBlockStart = i+3;
+                            var elseBlockEnd = i+3;
+                            if (_tokens[i+1].Type == TokenType.ELSE) {
+                                if (_tokens[i+2].Type == TokenType.BLOCK_START) {
+                                    while (_tokens[elseBlockEnd].Type != TokenType.BLOCK_END) {
+                                        elseBlockEnd++;
+                                    }
+                                    i = elseBlockEnd;
+                                    Run(elseBlockStart, elseBlockEnd - 1);
+                                }
+                            } 
                         }  
                     } 
                 } else if (_tokens[i+1].Type == TokenType.BLOCK_START) {

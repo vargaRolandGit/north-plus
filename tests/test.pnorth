@@ -2,9 +2,16 @@ push 34
 push 35
 add
 
-if 69 {
-    push 20
+if 70 {
+    print "true"
+} else {
+
+    if 69 {
+        print "na ez"
+    } else {
+        print "ez se"
+    }
+    
+    print "false"
 }
 
-push 40
-stack
